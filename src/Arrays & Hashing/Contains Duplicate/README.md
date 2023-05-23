@@ -57,3 +57,6 @@ The number of operations is proportional to the square of the size of the array,
 - Sort - HeapSort
 - Hash Set
 - Hash Set - Early Exit
+
+#### Link
+https://leetcode.com/problems/contains-duplicate/description/
