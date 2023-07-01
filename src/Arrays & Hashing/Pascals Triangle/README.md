@@ -95,16 +95,32 @@ So, the time complexity of the code is quadratic, `O(numRows^2)`, where numRows 
 
 #### Other Potential Solutions
 ```
-const longestCommonPrefix = (strings: string[]): string => {
-if(!strings.length) return '';
+var generate = function(num) {
 
-for(let i = 0; i < strings[0].length; i++) {
-        for(let s of strings) {
-            if(s[i] !== strings[0][i]) return s.slice(0, i);
-        }
+    const outerArray = [];
+    // adding first two rows of pascals triangle
+    if (num >= 2) {
+      outerArray.push([1]);
+      outerArray.push([1, 1]);
+    } else {
+      outerArray.push([1]);
     }
-    return strings[0];
-};
+
+    // will  only run if we had number greater than 2
+    if (num > 2) {
+      for (let i = 2; i < num; i++) {
+        let subArray = [];
+         subArray.push(1);
+        for (let j = 0; j < outerArray[i - 1].length - 1; j++) {
+          subArray.push(outerArray[i - 1][j] + outerArray[i - 1][j + 1]);
+        }
+        subArray.push(1);
+        outerArray.push(subArray);
+      }
+    }
+
+    return outerArray;
+ };
 ```
 
 #### Link
